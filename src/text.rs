@@ -408,7 +408,7 @@ impl<'a> LineChangeset<'a> {
     #[cfg(feature = "prettytable-rs")]
     /// Write side-by-side diff in table to any Writer.
     pub fn write_prettytable<W>(&self, f: &mut W) -> std::io::Result<usize>
-        where W: std::io::Write + std::io::IsTerminal
+        where W: std::io::Write + std::io::IsTerminal+ term::Terminal
     {
         let table = self.prettytable_mktable();
         table.print_term(f)
