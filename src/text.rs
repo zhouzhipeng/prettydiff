@@ -12,6 +12,7 @@ use std::{
     cmp::{max, min},
     fmt,
 };
+use prettytable::Table;
 
 pub struct StringSplitIter<'a, F>
 where
@@ -399,9 +400,9 @@ impl<'a> LineChangeset<'a> {
 
     #[cfg(feature = "prettytable-rs")]
     /// Prints side-by-side diff in table
-    pub fn prettytable(&self) {
+    pub fn prettytable(&self) -> Table {
         let table = self.prettytable_mktable();
-        table.printstd();
+        table
     }
 
     #[cfg(feature = "prettytable-rs")]
